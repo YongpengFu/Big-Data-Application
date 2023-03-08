@@ -248,4 +248,4 @@ if __name__ == '__main__':
     my_review = Review_file_io()
     my_review.get_product_reviews(
         './Dataset/Sample_link.csv', './Dataset/review.csv', './Dataset/empty_link.csv',
-        total_page=10, header_attempts=3, request_attempts=1)
+        total_page=999, header_attempts=3, request_attempts=1)
