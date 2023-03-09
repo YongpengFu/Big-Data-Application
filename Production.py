@@ -198,8 +198,12 @@ class Review_file_io:
                     review = mySoup.get_page_reviews(ASIN, page_soup)
                     # There are simply no reviews for this product item, break the loop
                     if not review:
-                        break
+                        continue
                     reviews.extend(review)
+                    # If there is no Previous Page or Next Page button, that means this is it, there is no more reviews to look, break it
+                    # what is inside this tag is: '←Previous pageNext page→'
+                    if not page_soup.find("ul", {'class': 'a-pagination'}):
+                        break
                     # Last page is hit, we break the for loop
                     if page_soup.find('li', {'class': 'a-disabled a-last'}):
                         break
@@ -247,5 +251,5 @@ if __name__ == '__main__':
     # There is a dramatic performance impact when you try larger header_attempts or request_attempts
     my_review = Review_file_io()
     my_review.get_product_reviews(
-        './Dataset/Sample_link.csv', './Dataset/review.csv', './Dataset/empty_link.csv',
+        './Dataset/Yong/remainging3.txt', './Dataset/Yong/review4.csv', './Dataset/Yong/empty_link4.csv',
         total_page=999, header_attempts=3, request_attempts=1)
