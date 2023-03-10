@@ -13,8 +13,9 @@ import os
 import csv
 from string import punctuation
 
-
 # Create a class to deal with web request and convert it to beautiful soup
+
+
 class get_soup:
     header = None
     # When the class is initiated, a list of user agent will be generated
@@ -196,14 +197,23 @@ class Review_file_io:
                 '''
                 if page_soup != 'No Data Returned':
                     review = mySoup.get_page_reviews(ASIN, page_soup)
-                    # There are simply no reviews for this product item, break the loop
+                    # There are simply no reviews for this product item, there are 2 things can happen:
+                    # 1st: the review page is just some random page returned by Amazon
+                    # 2nd: the review page is a normal review page but
+                    # because the page number has gone out of bound, there is simply no review at all
                     if not review:
+                        # this is is to check if the page is a normal review page but the page number is out of boundary
+                        # The first find is to check if the page still has product title
+                        # The second find is to check if there is no Previous Page or Next Page button, that means this is it, there is no more reviews to look, break it
+                        # what is inside this tag is: '←Previous pageNext page→'
+                        if page_soup.find("a", attrs={"data-hook": "product-link"}) and not page_soup.find("ul", {'class': 'a-pagination'}):
+                            break
                         continue
+
                     reviews.extend(review)
-                    # If there is no Previous Page or Next Page button, that means this is it, there is no more reviews to look, break it
-                    # what is inside this tag is: '←Previous pageNext page→'
-                    if not page_soup.find("ul", {'class': 'a-pagination'}):
-                        break
+
+                    # if not page_soup.find("ul", {'class': 'a-pagination'}):
+                    # break
                     # Last page is hit, we break the for loop
                     if page_soup.find('li', {'class': 'a-disabled a-last'}):
                         break
@@ -215,7 +225,7 @@ class Review_file_io:
                     continue
         # Save the reviews and empty page link
         try:
-            with open(reviews_loc, mode="w") as f:
+            with open(reviews_loc, mode="a") as f:
                 csv_columns = ['ASIN', 'product Name', 'Review Title',
                                'Review Rating', 'Review Body', 'Review Date']
                 writer = csv.DictWriter(f, fieldnames=csv_columns)
@@ -223,7 +233,7 @@ class Review_file_io:
                 for prod_info in reviews:
                     writer.writerow(prod_info)
 
-            with open(empty_page_loc, mode="w") as f:
+            with open(empty_page_loc, mode="a") as f:
                 writer = csv.writer(f)
                 writer.writerow(['URLs', 'ASIN'])
                 for key, page in empty_page.items():
@@ -251,5 +261,5 @@ if __name__ == '__main__':
     # There is a dramatic performance impact when you try larger header_attempts or request_attempts
     my_review = Review_file_io()
     my_review.get_product_reviews(
-        './Dataset/Yong/remainging3.txt', './Dataset/Yong/review4.csv', './Dataset/Yong/empty_link4.csv',
+        './Dataset/Sneha/xab', './Dataset/Yong/review_Sheha.csv', './Dataset/Yong/empty_link_Shena.csv',
         total_page=999, header_attempts=3, request_attempts=1)
