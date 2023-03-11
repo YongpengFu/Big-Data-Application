@@ -33,7 +33,7 @@ class get_soup:
         # I will generate a lsit of fake agent string with total number of total_user_agent
         self.user_agent_set = set()
         # Set a cap for user_agent_set to prevent endless loop
-        while(len(self.user_agent_set) < total_user_agent and len(self.user_agent_set) < 4500):
+        while (len(self.user_agent_set) < total_user_agent and len(self.user_agent_set) < 4500):
             self.user_agent_set.add(ua.random)
     '''
     Define the function to get contents from each page. 
@@ -261,5 +261,5 @@ if __name__ == '__main__':
     # There is a dramatic performance impact when you try larger header_attempts or request_attempts
     my_review = Review_file_io()
     my_review.get_product_reviews(
-        './Dataset/Sneha/xab', './Dataset/Yong/review_Sheha.csv', './Dataset/Yong/empty_link_Shena.csv',
-        total_page=999, header_attempts=3, request_attempts=1)
+        './Dataset/Sample_link.csv', './Dataset/Yong/review_Yong.csv', './Dataset/Yong/empty_link_Yong.csv',
+        total_page=200, header_attempts=3, request_attempts=1)
