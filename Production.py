@@ -254,7 +254,7 @@ if __name__ == '__main__':
     Chnage the ./Dataset/Sample_link.csv, ./Dataset/review.csv and ./Dataset/empty_link.csv to your own file directory
     The follwing is just an example.
     '''
-    # total_page=10:
+    # total_page=200: this is total pages it will look for reviews
     # header_attempts=3: the total number of fake-IP attempts to reach for a page
     # request_attempts=1: the total number of request if got denied from the web server for each header_attempts
     # Therefore, in total there are maximm header_attempts * request_attempts to retrieve contents
