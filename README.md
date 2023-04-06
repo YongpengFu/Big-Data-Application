@@ -7,8 +7,13 @@
     <a href="#" alt="aws">
         <img src="https://img.shields.io/badge/Amazon_AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" /></a>
     <a href="#" alt="docker">
-        <img src="https://img.shields.io/badge/Azure_DevOps-0078D7?style=for-the-badge&logo=azure-devops&logoColor=white" /></a>
-    <a href="#" alt="docker">
         <img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white" /></a>
+    <a href="#" alt="dash">
+        <img src="https://img.shields.io/badge/dash-008DE4?style=for-the-badge&logo=dash&logoColor=white" /></a>
+            <a href="#" alt="mysql">
+        <img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white" /></a>
 </p>
-This is a school collaboration project focused on building and deploying big data application in Cloud.
+This is a school collaboration project focused on building and deploying big data application in Cloud. Try our Machine Learning application in [here](http://18.219.46.82:5000/)
+
+The project is outlined as follows:
+![project pipeline](./Archive/img/project%20pipeline.png)
