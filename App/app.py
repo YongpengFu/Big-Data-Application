@@ -12,6 +12,6 @@ app1 = dash.Dash(__name__, suppress_callback_exceptions=True,
                 )
 
 # Give a name of the website shown in the browser
-app1.title = "Amazon Headphones Sentimental Analysis"
+app1.title = "Amazon Headphones Sentiment Analysis"
 # This is necessary for heroku
 server = app1.server

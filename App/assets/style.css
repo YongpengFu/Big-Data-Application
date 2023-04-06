@@ -1,0 +1,172 @@
+body {
+    font-family: "Lato", sans-serif;
+    margin: 0;
+    background-color: #F7F7F7;
+}
+
+.CardHeaderStyle{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 20px;
+    background-color: #cccccc;
+}
+
+.CardBodyStyle{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 15px;
+    background-color: #ffffff;
+}
+
+.header {
+    background-color: #a8c6d1;
+    height: 288px;
+    padding: 16px 0 0 0;
+}
+
+.productItem {    
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.product-image{
+    text-align: right;    
+    padding: 0;
+}
+
+.sub-header {    
+    font-size: 30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    text-align: left;
+    padding: 5% 5% 0 0;
+    height: 50px;
+}
+
+.sidebar_style {
+    position: fixed;
+    top: 0%;
+    left: 0;
+    bottom: 0;
+    width: 23%;
+    padding: 0px 2px;
+    overflow-y: scroll;
+    background-color: #f8f9fa
+}
+
+.product_analysis_card_style {
+    position: relative;
+    padding: 0px 5px;
+    background-color: #f8f9fa;
+}
+
+.product_detail_card_style {
+    position: relative;
+    padding: 0px 5px;
+    margin: 0px 15px;
+    background-color: #f8f9fa;
+}
+
+.content_style {
+    margin-left: 30%;
+    margin-right: 15%;
+    top: 0;
+    padding: 0px 0px;
+}
+
+.header-emoji {
+    font-size: 48px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.log-image{
+    margin-top: 60px;
+    text-align: center;
+    padding: 0;
+}
+
+.header-title {
+    color: #343434;
+    font-size: 48px;
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: left;
+    margin-top: 50px;
+    padding: 0;
+}
+
+.header-description {
+    color: #ffffff;
+    margin: 4px auto;
+    text-align: center;
+    max-width: 384px;
+}
+
+.wrapper {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1024px;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-top: 32px;
+}
+
+.card {
+    margin-bottom: 24px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.18);
+}
+
+.menu {
+    height: 150px;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-top: 24px;
+    margin: -50px auto 0 auto;
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.18);
+}
+
+.Select-control {
+    width: 256px;
+    height: 48px;
+}
+
+.Select--single>.Select-control .Select-value,
+.Select-placeholder {
+    line-height: 48px;
+}
+
+.Select--multi .Select-value-label {
+    line-height: 32px;
+}
+
+.menu-title {
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #079A82;
+}
+
+.navbar-nav .active {
+    color: red;
+}
+
+.my_link {
+    text-decoration: none;
+    color: dodgerblue
+}
+
+.my_link:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Dash adds thick red outline to the input element with :invalid pseudo-class. This conflicts with Mantine. In order to correct this, just add the following css to your app. */
+input:invalid {
+    outline: none !important;
+}
+
+.row_style {
+    margin-bottom: 10px;
+    margin-left: 4px
+}

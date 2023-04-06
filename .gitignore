@@ -131,3 +131,8 @@ dmypy.json
 Archive/Web Scrapping from Amazon Mar 3 2023.ipynb
 Amazon Sentiment Analysis.ipynb
 Amazon Sentiment Analysis.ipynb
+
+#some files are too big to be stored in github, we will not add them
+train_MNB.csv
+MLP_Model.joblib
+train_mlp.csv

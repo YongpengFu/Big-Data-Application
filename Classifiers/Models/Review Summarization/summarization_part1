@@ -1,0 +1,76 @@
+#summarization
+
+#merge all reviews for each item and produce its summary
+#readzip = pd.read_csv('B088H7GMHZ_first_440Reviews.zip', compression='zip')
+
+import re  # regular expression
+import pandas as pd  # output dataframe
+import numpy as np  # fast data manipulation
+import os
+import csv
+from string import punctuation
+
+#import dataset
+dataset = pd.read_csv('sony-headphones.csv')
+
+#drop na rows and reset index
+df = dataset.dropna(axis = 0)
+df.reset_index(inplace = True)
+
+#merge all reviews in one row - one row per item and drop the other columns
+df['joinreviews'] = df.groupby(['product'])['body'].transform(lambda x : '\n '.join(x))
+df = df.drop_duplicates() 
+df = df.drop(['index','title','rating','body'], axis=1)
+df = df.drop_duplicates()
+df_write = df['joinreviews'][0]
+
+#write to a text file
+with open("review1.txt", "w") as f_out:
+    f_out.write("".join(df_write))
+
+#read reviews from the text file
+with open('review1.txt', 'r') as file:
+    data = file.read().rstrip()
+
+#text summarization with spacy
+import spacy
+from spacy.lang.en.stop_words import STOP_WORDS
+from string import punctuation
+from heapq import nlargest
+
+def summarize(text, per):
+    nlp = spacy.load('en_core_web_sm')
+    doc= nlp(text)
+    tokens=[token.text for token in doc]
+    word_frequencies={}
+    for word in doc:
+        if word.text.lower() not in list(STOP_WORDS):
+            if word.text.lower() not in punctuation:
+                if word.text not in word_frequencies.keys():
+                    word_frequencies[word.text] = 1
+                else:
+                    word_frequencies[word.text] += 1
+    max_frequency=max(word_frequencies.values())
+    for word in word_frequencies.keys():
+        word_frequencies[word]=word_frequencies[word]/max_frequency
+    sentence_tokens= [sent for sent in doc.sents]
+    sentence_scores = {}
+    for sent in sentence_tokens:
+        for word in sent:
+            if word.text.lower() in word_frequencies.keys():
+                if sent not in sentence_scores.keys():                            
+                    sentence_scores[sent]=word_frequencies[word.text.lower()]
+                else:
+                    sentence_scores[sent]+=word_frequencies[word.text.lower()]
+    select_length=int(len(sentence_tokens)*per)
+    summary=nlargest(select_length, sentence_scores,key=sentence_scores.get)
+    final_summary=[word.text for word in summary]
+    summary=''.join(final_summary)
+    return summary
+
+s = summarize(data, 0.05)
+# print(s)
+
+#write the summary in a text file
+with open("summary11.txt", "w") as f_out:
+    f_out.write("".join(s))
