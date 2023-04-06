@@ -13,6 +13,7 @@
             <a href="#" alt="mysql">
         <img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white" /></a>
 </p>
+
 This is a school collaboration project focused on building and deploying big data application in Cloud. Try our Machine Learning application in **[here](http://18.219.46.82:5000/)**.  
 
 
