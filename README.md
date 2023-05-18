@@ -16,6 +16,8 @@
 
 This is a school collaboration project focused on building and deploying big data application in Cloud. Try our Machine Learning application in **[here](http://18.219.46.82:5000/)**.  
 
+**NOTE**: Unfortunately the above link has been discountined because we have used up ouw AWS free tier limit, we have to close the app.
+
 
 The project is outlined as follows:
 ![project pipeline](./Archive/img/project%20pipeline.png)
